@@ -1,0 +1,377 @@
+/* 
+
+    table of contents
+
+    1. global
+    2. layout
+    3. nav
+    4. header
+    5. sections
+    6. list
+    7. forms
+    8. buttons
+    9. media queries
+
+*/
+
+/*  =====
+
+    1. global
+
+===== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --clr-light: #fff;
+    --clr-lighter: rgb(43, 208, 230); 
+    --clr-dark: #000;
+    --clr-primary: rgb(30, 214, 92);
+    --clr-secondary: rgb(164, 64, 211);
+}
+/*  =====
+
+    2. layout
+
+===== */
+body {
+    background: var(--clr-primary);
+    color: var(--clr-dark);
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    /* height: 100vh; */
+
+    display: grid;
+    grid:
+        "header header header header" auto
+        "..... lists active ....." auto /
+        1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+}
+
+.title {
+    grid-area: header;
+    text-align: center;
+    font-size: calc(5vw + 2rem);
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--clr-secondary);
+    margin: 0.3em 0 0.5em;
+}
+
+
+
+/*  =====
+
+    3. nav
+
+===== */
+.nav {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.nav a {
+    color: #fff;
+    flex: 33%;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 5px;
+    margin: auto;
+    text-transform: uppercase;
+    padding: 20px 0px;
+}
+
+/*  =====
+
+    4. header
+
+===== */
+.header {
+    height: 200px;
+    display: flex;
+    /* grid-area: header; */
+}
+.header h2 {
+    margin: auto;
+    
+}
+
+/*  =====
+
+    5. sections
+
+===== */
+.todo-header {
+    padding: var(--spacer);
+    /* background-color: var(--clr-lighter); */
+    /* background: rgb(65,100,223);
+    background: linear-gradient(180deg, rgba(65,100,223,1) 29%, rgba(65,226,94,1) 81%); */
+    background: var(--clr-secondary);
+    border-radius: 20px 20px 0px 0px;
+    color: var(--clr-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.todo-body {
+    padding: var(--spacer);
+    position: relative;
+}
+
+
+/*  =====
+
+    6. lists
+
+===== */
+
+/* todo list grid placement */
+.all-tasks {
+    grid-area: lists;
+    color: var(--clr-light);
+}
+
+/* todo list props */
+.todo-list {
+    grid-area: active;
+    background-color: var(--clr-light);
+    
+    border-radius: 20px;
+    --spacer: 3rem;
+}
+.active-list {
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-decoration: var(--clr-light) underline;
+    text-transform: uppercase;
+    
+}
+
+.list-title {
+    margin: 0;
+    font-weight: 800;
+    font-size: 2.4rem;
+}
+.list-name {
+    cursor: pointer;
+}
+.list-name:hover {
+    opacity: 0.7;
+}
+
+
+
+
+/* new list item props */
+.new {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    color: inherit;
+    font-size: inherit;
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+    padding: 0.25em;
+}
+.new:focus::placeholder {
+    opacity: 0.4;
+}
+
+.new.task {
+    margin-bottom: 0;
+
+}
+.new.list {
+    font-size: 1.1rem;
+}
+.new:focus {
+    border-bottom-width: 5px;
+}
+.new:focus::placeholder {
+    opacity: 0.2;
+}
+.new-task-creator .create {
+    color: var(--clr-primary);
+}
+
+
+/*  =====
+
+    7. forms
+
+===== */
+form {
+    display: flex;
+    /* background: rgb(146,65,223);
+    background: linear-gradient(344deg, rgba(146,65,223,1) 45%, rgba(57,134,228,1) 60%);  */
+    
+}
+/* task list props */
+.task {
+    position: relative;
+    margin-bottom: 1.25em;
+}
+.task::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.3;
+
+
+}
+.task label::after {
+    content: "";
+    position: absolute;
+    left: 1.9em;
+    top: 50%;
+    right: 0;
+    height: 3px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* task elements */
+.task-list-title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    text-decoration: underline;
+}
+.task-list {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    list-style-type: circle;
+    padding: 1.1em;
+}
+.task label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+.task-count {
+    margin: 0;
+    font-size: 1rem;
+}
+
+
+
+
+/* checkbox custom */
+.custom-checkbox {
+    --size: 0.75em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    margin: 10px 15px;
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+
+}
+
+/* checkbox props */
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+    transform: scale(1.3);
+    /* color: #fff; */
+    color: var(--clr-primary);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background: var(--clr-primary);
+    border-color: var(--clr-primary);
+    box-shadow: inset 0 0 0 2px white;
+}
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+
+/* checkbox hide */
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/*  =====
+
+    8. buttons
+
+===== */
+.btn {
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    /* color: var(--clr-secondary); */
+    
+    
+}
+
+.btn.create {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+    transition: opacity 250ms ease-in;
+    color: var(--clr-secondary);
+}
+.btn.list:hover {
+    opacity: 0.7;
+}
+
+.delete-item {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+    color: var(--clr-light);
+}
+
+.btn.delete {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: color 200ms;
+}
+
+.btn.delete:hover {
+    color: var(--clr-warning);
+
+}
+/*  =====
+
+    9. media queries
+
+===== */
+
+@media only screen and (max-width: 800px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+    }
+}
+

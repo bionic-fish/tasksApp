@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Christopher Harris">
+    <title>Todo List</title>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans&display=swap" rel="stylesheet">
+
+    <!-- js -->
+    <script defer src="index.js"></script>
+
+</head>
+<body>
+<!-- to do title -->
+<h1 class="title">Task Tracker</h1>
+<!-- to do title end -->
+
+<!-- all tasks -->
+<div class="all-tasks">
+    
+    <!-- interactive list title -->
+    <h2 class="task-list-title">My Lists</h2>
+    
+    <!-- data-lists -->
+    <ul class="task-list" data-lists></ul>
+    <!-- data-lists end -->
+    
+    <!-- form input -->
+    <form action="" data-new-list-form>
+        <!-- input [my lists] -->
+        <input
+        class="new list"
+        type="text"
+        placeholder="new list name" 
+        data-new-list-input 
+        aria-label="new list name" />
+        <!-- input [my lists] end -->
+        
+        <!-- create btn -->
+        <button class="btn create" aria-label="create new list">+</button>
+        <!-- create btn end -->
+    </form>
+    <!-- form input end -->
+
+</div>
+<!-- all tasks end -->
+
+<!-- todo list -->
+<div class="todo-list" data-list-display-container>
+    <!-- todo header -->
+    <div class="todo-header">
+        <h2 class="list-title" data-list-title>Title</h2>
+        <p class="task-count" data-list-count>Task Count</p>
+    </div>
+    <!-- todo header -->
+
+    <!-- todo body -->
+    <div class="todo-body">
+        <!-- tasks [list items] -->
+        <div class="tasks" data-tasks></div>
+        <!-- tasks end -->
+        
+        <!-- todo input -->
+        <div class="new-task-creator" data-new-task-form>
+            <form action="">
+                <input type="text" class="new task" placeholder="new task name" data-new-task-input aria-label="new task name">
+                <button class="btn create" aria-label="create new task">+</button>
+            </form>
+        </div>
+        <!-- todo input end -->
+
+        <!-- clear & delete buttons -->
+        <div class="delete-item">
+            <button class="btn delete" data-clear-complete-task-btn>Clear Completed Tasks</button>
+            <button class="btn delete" data-delete-list-btn>Delete List</button>
+        </div>
+        <!-- clear & delete buttons end -->
+    </div>
+    <!-- list body end -->
+</div>
+<!-- to do list end -->
+
+<template id="task-template">
+    <!-- task -->
+    <div class="task">
+        <input type="checkbox">
+        <label>
+            <span class="custom-checkbox"></span>
+        </label>
+    </div>
+    <!-- task -->
+</template>
+
+
+
+</body>
+</html>
+
+
+    
