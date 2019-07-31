@@ -1,4 +1,6 @@
 # tasksApp
+<img src="https://github.com/bionic-fish/tasksApp/blob/master/UI.JPG">
+
 Task Tracking Web Application Developed
 
 <h2> Todo List Tutorial </h2>
@@ -29,3 +31,5 @@ https://www.youtube.com/watch?v=W7FaYfuwu70
       <li>Delete Task Item</li>
       <li>Delete Task List</li>
     </ul>
+
+Developer : C D Harris
